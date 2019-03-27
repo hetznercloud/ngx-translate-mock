@@ -1,0 +1,11 @@
+{
+  "name": "@hetznercloud/ngx-translate-mock",
+  "license": "MIT",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": ">=6",
+    "@angular/core": ">=6",
+    "@ngx-translate/core": ">=10",
+    "rxjs": ">=6"
+  }
+}

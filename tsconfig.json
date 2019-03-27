@@ -1,0 +1,23 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es5",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"],
+    "paths": {
+      "ngx-translate-mock": ["dist/ngx-translate-mock"],
+      "ngx-translate-mock/*": ["dist/ngx-translate-mock/*"],
+      "ngx-prepare-test-environment": ["dist/ngx-prepare-test-environment"],
+      "ngx-prepare-test-environment/*": ["dist/ngx-prepare-test-environment/*"]
+    }
+  }
+}

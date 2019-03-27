@@ -1,5 +1,6 @@
 {
   "name": "@hetznercloud/ngx-translate-mock",
+  "repository": "https://github.com/hetznercloud/ngx-translate-mock",
   "license": "MIT",
   "version": "0.0.1",
   "peerDependencies": {

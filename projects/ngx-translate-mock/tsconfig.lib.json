@@ -9,7 +9,7 @@
     "sourceMap": true,
     "inlineSources": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": false,
+    "experimentalDecorators": true,
     "importHelpers": true,
     "types": [],
     "lib": ["dom", "es2018"]

@@ -13,12 +13,14 @@ import {
     NgModule,
     Pipe,
     PipeTransform,
+    Injectable,
 } from '@angular/core';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 
 export const TRANSLATED_STRING: string = 'i18n';
 
+@Injectable()
 export class TranslateServiceMock {
     onLangChangeSubject: Subject<LangChangeEvent> = new Subject();
     onTranslationChangeSubject: Subject<string> = new Subject();

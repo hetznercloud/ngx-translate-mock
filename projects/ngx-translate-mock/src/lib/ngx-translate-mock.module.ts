@@ -4,7 +4,17 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { AfterViewChecked, Directive, ElementRef, EventEmitter, Input, NgModule, Pipe, PipeTransform, Injectable } from '@angular/core';
+import {
+    AfterViewChecked,
+    Directive,
+    ElementRef,
+    EventEmitter,
+    Input,
+    NgModule,
+    Pipe,
+    PipeTransform,
+    Injectable,
+} from '@angular/core';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 

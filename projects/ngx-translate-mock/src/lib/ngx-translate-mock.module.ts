@@ -1,19 +1,19 @@
 /**
- * Copyright (c) 2019 Hetzner Cloud GmbH
+ * Copyright (c) 2020 Hetzner Cloud GmbH
  *
  * SPDX-License-Identifier: MIT
  */
 
 import {
-    AfterViewChecked,
-    Directive,
-    ElementRef,
-    EventEmitter,
-    Input,
-    NgModule,
-    Pipe,
-    PipeTransform,
-    Injectable,
+  AfterViewChecked,
+  ClassProvider,
+  Directive,
+  ElementRef,
+  Injectable,
+  Input,
+  NgModule,
+  Pipe,
+  PipeTransform,
 } from '@angular/core';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
@@ -99,9 +99,14 @@ export class TranslateMockDirective implements AfterViewChecked {
     }
 }
 
+export const TRANSLATE_SERVICE_MOCK: ClassProvider = {
+    provide: TranslateService,
+    useClass: TranslateServiceMock,
+};
+
 @NgModule({
     declarations: [TranslateMockPipe, TranslateMockDirective],
     exports: [TranslateMockPipe, TranslateMockDirective],
-    providers: [{ provide: TranslateService, useClass: TranslateServiceMock }],
+    providers: [TRANSLATE_SERVICE_MOCK],
 })
 export class TranslateMockModule {}

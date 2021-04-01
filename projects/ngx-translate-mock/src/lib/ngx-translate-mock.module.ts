@@ -5,15 +5,15 @@
  */
 
 import {
-  AfterViewChecked,
-  ClassProvider,
-  Directive,
-  ElementRef,
-  Injectable,
-  Input,
-  NgModule,
-  Pipe,
-  PipeTransform,
+    AfterViewChecked,
+    ClassProvider,
+    Directive,
+    ElementRef,
+    Injectable,
+    Input,
+    NgModule,
+    Pipe,
+    PipeTransform,
 } from '@angular/core';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
@@ -27,23 +27,27 @@ export class TranslateServiceMock {
     onDefaultLangChangeSubject: Subject<string> = new Subject();
     isLoadedSubject: BehaviorSubject<boolean> = new BehaviorSubject(true);
 
-    onLangChange: Observable<
-        LangChangeEvent
-    > = this.onLangChangeSubject.asObservable();
-    onTranslationChange: Observable<
-        string
-    > = this.onTranslationChangeSubject.asObservable();
-    onDefaultLangChange: Observable<
-        string
-    > = this.onDefaultLangChangeSubject.asObservable();
+    onLangChange: Observable<LangChangeEvent> = this.onLangChangeSubject.asObservable();
+    onTranslationChange: Observable<string> = this.onTranslationChangeSubject.asObservable();
+    onDefaultLangChange: Observable<string> = this.onDefaultLangChangeSubject.asObservable();
     isLoaded: Observable<boolean> = this.isLoadedSubject.asObservable();
 
     currentLang: string;
 
     languages: string[] = ['de'];
 
-    get(content: string): Observable<string> {
-        return of(TRANSLATED_STRING + content);
+    get(content: string, interpolateParams?: object): Observable<string>;
+    get(
+        content: string[],
+        interpolateParams?: object
+    ): Observable<Record<string, string>>;
+    get(
+        content: string | string[],
+        interpolateParams?: object
+    ): Observable<string | Record<string, string>> {
+        return typeof content === 'string'
+            ? of(TRANSLATED_STRING + content)
+            : of(this._translateArray(content));
     }
 
     use(lang: string): void {
@@ -68,12 +72,29 @@ export class TranslateServiceMock {
         return of({});
     }
 
-    instant(key: string | string[], interpolateParams?: object): string {
-        return TRANSLATED_STRING + key.toString();
+    instant(
+        content: string[],
+        interpolateParams?: object
+    ): Record<string, string>;
+    instant(content: string, interpolateParams?: object): string;
+    instant(
+        content: string | string[],
+        interpolateParams?: object
+    ): string | Record<string, string> {
+        return typeof content === 'string'
+            ? TRANSLATED_STRING + content
+            : this._translateArray(content);
     }
 
     setDefaultLang(lang: string): void {
         this.onDefaultLangChangeSubject.next(lang);
+    }
+
+    private _translateArray(content: string[]): Record<string, string> {
+        return content.reduce(
+            (result, item) => (result[item] = TRANSLATED_STRING + item),
+            {}
+        );
     }
 }
 
@@ -92,6 +113,7 @@ export class TranslateMockPipe implements PipeTransform {
 export class TranslateMockDirective implements AfterViewChecked {
     @Input()
     translateParams: any;
+
     constructor(private readonly _element: ElementRef) {}
 
     ngAfterViewChecked(): void {

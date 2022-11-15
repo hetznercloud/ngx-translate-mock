@@ -4,7 +4,7 @@
   "license": "MIT",
   "version": "1.0.0",
   "peerDependencies": {
-    "@angular/core": ">=13",
+    "@angular/core": ">=14",
     "@ngx-translate/core": "^14.0.0",
     "rxjs": ">=6"
   }

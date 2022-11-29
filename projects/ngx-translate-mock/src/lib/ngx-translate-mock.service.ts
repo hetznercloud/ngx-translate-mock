@@ -24,8 +24,10 @@ export class TranslateServiceMock {
 
     languages: string[] = ['de'];
 
-    get(content: string): Observable<string> {
-        return of(TRANSLATED_STRING + content);
+    get(content: string | Array<string>, interpolateParams?: Object): Observable<string | any> {
+        return typeof content === 'string'
+            ? of(TRANSLATED_STRING + content)
+            : of(this._translateArray(content));
     }
 
     use(lang: string): void {
@@ -50,11 +52,20 @@ export class TranslateServiceMock {
         return of({});
     }
 
-    instant(key: string | string[], interpolateParams?: object): string {
-        return TRANSLATED_STRING + key.toString();
-    }
+    instant(content: string | Array<string>, interpolateParams?: Object): string | any {
+      return typeof content === 'string'
+          ? TRANSLATED_STRING + content
+          : this._translateArray(content);
+  }
 
     setDefaultLang(lang: string): void {
         this.onDefaultLangChangeSubject.next(lang);
     }
+
+    private _translateArray(content: string[]): Record<string, string> {
+      return content.reduce((result, item) => {
+          result[item] = TRANSLATED_STRING + item;
+          return result;
+      }, {} as Record<string, string>);
+  }
 }

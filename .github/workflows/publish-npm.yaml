@@ -15,6 +15,6 @@ jobs:
       - name: build
         run: yarn build
       - name: publish
-        run: cd ./dist/ngx-translate-mock && npm publish --access public
+        run: cd ./dist/ngx-translate-mock && npm publish
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

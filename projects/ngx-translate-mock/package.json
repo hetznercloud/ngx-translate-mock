@@ -9,6 +9,6 @@
     "rxjs": ">=6"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "@hetznercloud:registry": "https://registry.npmjs.org/@hetznercloud"
   }
 }

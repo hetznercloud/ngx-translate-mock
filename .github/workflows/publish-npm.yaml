@@ -17,4 +17,4 @@ jobs:
       - name: publish
         run: cd ./dist/ngx-translate-mock && npm publish
         env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -2,7 +2,7 @@
   "name": "@hetznercloud/ngx-translate-mock",
   "repository": "https://github.com/hetznercloud/ngx-translate-mock",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "peerDependencies": {
     "@angular/core": ">=14",
     "@ngx-translate/core": "^14.0.0",

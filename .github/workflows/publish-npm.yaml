@@ -10,6 +10,7 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
           scope: '@hetznercloud'
+          always-auth: true
       - name: install dependencies
         run: yarn install --frozen-lockfile
       - name: build

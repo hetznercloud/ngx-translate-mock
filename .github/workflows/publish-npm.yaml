@@ -16,6 +16,6 @@ jobs:
       - name: build
         run: yarn build
       - name: publish
-        run: cd ./dist/ngx-translate-mock && echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc && yarn publish --access public
+        run: cd ./dist/ngx-translate-mock && && yarn publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

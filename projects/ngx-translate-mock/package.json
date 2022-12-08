@@ -7,8 +7,5 @@
     "@angular/core": ">=14",
     "@ngx-translate/core": "^14.0.0",
     "rxjs": ">=6"
-  },
-  "publishConfig": {
-    "@hetznercloud:registry": "https://registry.npmjs.org/@hetznercloud"
   }
 }

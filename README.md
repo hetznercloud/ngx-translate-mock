@@ -1,5 +1,7 @@
 # NgxTranslateMock
 
+> 🚨 This repository is archived and will no longer receive any updates. No pull requests will be accepted and no new versions released.
+
 [![npm version](https://badge.fury.io/js/@hetznercloud%2Fngx-translate-mock.svg)](https://badge.fury.io/js/@hetznercloud%2Fngx-translate-mock)
 
 This packages provides a mock module for [ngx-translate](https://github.com/ngx-translate/core).
